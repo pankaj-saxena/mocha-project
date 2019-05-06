@@ -1,0 +1,21 @@
+{
+  "name": "mocha-project",
+  "version": "1.0.0",
+  "description": "This project is learn testing using mocha",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --reporter mochawesome --reporter-options reportDir=./test/reports,enableCode=false,reportFilename=unit-test.html,reportPageTitle='UnitTestReport'",
+    "start": "node app.js",
+    "eslint": "eslint . -o ./test/reports/code-review.html -f html",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov --report-dir ./test/reports npm test"
+  },
+  "author": "caesar@abc.com",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "mocha": "^6.1.4",
+    "mochawesome": "^3.1.2",
+    "nyc": "^14.1.0"
+  }
+}
