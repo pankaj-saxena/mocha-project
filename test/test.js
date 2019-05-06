@@ -1,18 +1,27 @@
 var assert = require('assert');
 var calc = require('../module/calculator');
+var {}= require('chai').should();
 
 describe('Testing Calculator', function(){
     it('should calculate the sum of two numbers', function(){
-        assert.equal(calc.calculate('a', 9, 3),12,'passed');
+        //assert.equal(calc.calculate('a', 9, 3),12,'passed');
+        var result = calc.calculate('a', 9, 3);
+        result.should.be.equal(12);
     });
     it('should calculate the difference of two numbers', function(){
-        assert.equal(calc.calculate('s', 9, 3),6,'passed');
+        //assert.equal(calc.calculate('s', 9, 3),6,'passed');
+        var result = calc.calculate('s', 9, 3);
+        result.should.be.equal(6);
     });
     it('should calculate the product of two numbers', function(){
-        assert.equal(calc.calculate('m', 9, 3),27,'passed');
+        //assert.equal(calc.calculate('m', 9, 3),27,'passed');
+        var result = calc.calculate('m', 9, 3);
+        result.should.be.equal(27);
     });
     it('should calculate the dividend of two numbers', function(){
-        assert.equal(calc.calculate('d', 9, 3),3,'passed');
+        //assert.equal(calc.calculate('d', 9, 3),3,'passed');
+        var result = calc.calculate('d', 9, 3);
+        result.should.be.equal(3);
     });
 
 })
