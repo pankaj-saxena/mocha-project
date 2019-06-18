@@ -4,7 +4,7 @@ const calc = require('./module/calculator.js');
 
 try {
     console.log(typeof NaN);
-    console.log('Outcome:%d',calc.calculate('a', 's',3));
+    console.log('Outcome:%d',calc.calculate('a', 9,3));
     
 }catch(err){
     console.log(err);

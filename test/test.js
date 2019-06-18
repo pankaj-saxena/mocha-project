@@ -1,8 +1,9 @@
 var assert = require('assert');
+var expect = require('chai').expect;
 var calc = require('../module/calculator');
 var {}= require('chai').should();
 
-describe('Testing Calculator', function(){
+describe.skip('Testing Calculator', function(){
     it('should calculate the sum of two numbers', function(){
         //assert.equal(calc.calculate('a', 9, 3),12,'passed');
         var result = calc.calculate('a', 9, 3);
@@ -26,7 +27,7 @@ describe('Testing Calculator', function(){
 
 })
 
-describe('Testing Calculator-Exceptions',function(){
+describe.skip('Testing Calculator-Exceptions',function(){
     it('should return error for blank operation', function(){
         assert.throws(()=>{calc.calculate('',3,3);}, /Error: Operation can not be blank. Operation - \[a\]ddition, \[s\]ubtraction, \[m\]ultiply, \[d\]ivide/,'failed');        
     });
@@ -38,3 +39,71 @@ describe('Testing Calculator-Exceptions',function(){
     });
 })
 
+describe('Testing async api',()=>{
+    it.skip("Using setTimeout to simulate asynchronous code!", function(done){
+        setTimeout(function() {
+            console.log("Test");
+            done();
+        }, 200);
+    });
+
+    it.skip("Using setTimeout to simulate asynchronous code!", function(done){
+        setTimeout(function() {
+            done(new Error("This is a sample failing async test"));
+        }, 200);
+    });
+
+    it.skip("Using a Promise that resolves successfully!", function(done) {
+        var testPromise = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve("Hello!");
+            }, 200);
+        });
+    
+        testPromise.then(function(result) {
+            expect(result).to.equal("Hello World!");
+            done();
+        }, done);
+    });
+
+    it.skip("Using a Promise that resolves successfully!", function(done) {
+        var testPromise = new Promise(resolve=> {
+            setTimeout(function() {
+                resolve("Hello World!");
+            }, 2000);
+        });
+    
+        testPromise.then(function(result){
+            try {
+                expect(result).to.equal("Hello!");
+                done();
+            } catch(err) {
+                done(err);
+            }
+        }, done);
+    });
+
+    it("Using a Promise that resolves successfully with correct expectation!", function() {
+        var testPromise = new Promise(function(resolve) {
+            setTimeout(function() {
+                resolve("Hello World!");
+            }, 200);
+        });
+    
+        return testPromise.then(function(result){
+            expect(result).to.equal("Hello World!");
+        });
+    });
+
+    it("Using a Promise with async/await that resolves successfully with wrong expectation!", async function() {
+        var testPromise = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                resolve("Hello World!");
+            }, 200);
+        });
+    
+        var result = await testPromise;
+    
+        expect(result).to.equal("Hello!");
+    });
+});
